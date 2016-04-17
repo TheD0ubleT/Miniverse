@@ -5,7 +5,9 @@ import sim.World.Space.Coordinates;
 
 public class Star extends AstronomicalObject
 {
+	@SuppressWarnings("unused")
 	private double radius;
+	@SuppressWarnings("unused")
 	private double temperature;
 
 	////Constructor////

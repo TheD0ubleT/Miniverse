@@ -21,7 +21,11 @@ public class Constants
 	public static double E = 2.7182818284d;
 	
 	////Physics////
-	public static double G = 6.67e-11;
+	public static double G = 6.67408e-11; //Gravitational constant
+	public static double H = 6.62607004e-34; //Planck's constant
+	public static double C = 299_792_458; //Speed of light
+	public static double ELEMETARY_CHARGE = 1.602176565e-19;
+	public static double MOL = 6.02214129e23; //Avogadro's number
 	
 	////////////////////////////////////////////////////
 	//////////METHODS//////METHODS//////METHODS/////////

@@ -18,7 +18,7 @@ public class Speed
 		this.speedCoordinates = speed;
 	}
 	
-	//sets new positionwith given current speed 
+	//sets new position with given current speed 
 	public Coordinates updatePosition(Coordinates currentPos)
 	{
 		currentPos.setX(currentPos.getX() + speedCoordinates.getX());
@@ -34,5 +34,11 @@ public class Speed
 		speedCoordinates.setX(speedCoordinates.getX() + acceleration.getCoordinates().getX());
 		speedCoordinates.setY(speedCoordinates.getY() + acceleration.getCoordinates().getY());
 		speedCoordinates.setZ(speedCoordinates.getZ() + acceleration.getCoordinates().getZ());
+	}
+	
+	////Getters////
+	public Coordinates getSpeedCoordinates()
+	{
+		return this.speedCoordinates;
 	}
 }

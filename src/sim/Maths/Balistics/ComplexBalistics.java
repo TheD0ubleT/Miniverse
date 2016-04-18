@@ -59,11 +59,11 @@ public class ComplexBalistics
 	//returns 0 if axis not known
 	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
 	{
-		if (axis == 'x')
+		if (axis == 'x' && (obj2.getCoordinates().getX() - obj.getCoordinates().getX()) != 0)
 			return (Constants.G * obj2.getMass() * obj.getMass()) / Operators.square(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
-		if (axis == 'y')
+		if (axis == 'y' && (obj2.getCoordinates().getY() - obj.getCoordinates().getY()) != 0)
 			return (Constants.G * obj2.getMass() * obj.getMass()) / Operators.square(obj2.getCoordinates().getY() - obj.getCoordinates().getY());
-		if (axis == 'z')
+		if (axis == 'z' && (obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) != 0)
 			return (Constants.G * obj2.getMass() * obj.getMass()) / Operators.square(obj2.getCoordinates().getZ() - obj.getCoordinates().getZ());
 		
 		return 0d;

@@ -32,7 +32,7 @@ public class Operators
 	{
 		Vector sum = new Vector(0, 0, 0);
 		for(Vector vector : vectors)
-			sum = vectorAdd(sum, vector);
+			vectorAdd(sum, vector);
 		
 		return sum;
 	}

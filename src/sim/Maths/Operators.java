@@ -24,10 +24,8 @@ public class Operators
 		return x * x * x;
 	}
 	
-	//////////////
+	/////////////////////////
 	////Vector operations////
-	
-	////Sum////
 	public static Vector vectorSum(Vector[] vectors)
 	{
 		Vector sum = new Vector(0, 0, 0);
@@ -40,6 +38,11 @@ public class Operators
 	public static Vector vectorAdd(Vector v1, Vector v2)
 	{
 		return new Vector(v1.getCoordinates().getX() + v2.getCoordinates().getX(), v1.getCoordinates().getY() + v2.getCoordinates().getY(), v1.getCoordinates().getZ() + v2.getCoordinates().getZ());
+	}
+	
+	public static Vector VectorMultiply(double d, Vector v)
+	{
+		return new Vector(v.getCoordinates().getX()*d, v.getCoordinates().getY()*d, v.getCoordinates().getZ()*d);
 	}
 	
 	////Scalar////

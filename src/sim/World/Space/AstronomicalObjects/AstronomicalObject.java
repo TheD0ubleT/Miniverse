@@ -45,4 +45,8 @@ public abstract class AstronomicalObject
 	{
 		this.coordinates = coordinates;
 	}
+	public void setSpeed(Speed speed)
+	{
+		this.speed = speed;
+	}
 }

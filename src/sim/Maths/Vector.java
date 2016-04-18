@@ -10,9 +10,7 @@ public class Vector
 	////Constructor////
 	public Vector(double x, double y, double z)
 	{
-		this.coordinates.setX(x);
-		this.coordinates.setY(y);
-		this.coordinates.setZ(z);
+		this.coordinates = new Coordinates(x, y, z);
 	}
 	
 	//return length of vector

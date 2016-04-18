@@ -50,7 +50,7 @@ public class ComplexBalistics
 		
 		//Calculates new position given old position and new speed vector
 		for (AstronomicalObject obj : astronomicalObjects)
-			obj.getSpeed().updatePosition(obj.getCoordinates());
+			obj.setCoordinates(obj.getSpeed().updatePosition(obj.getCoordinates()));
 	}
 
 	//gets acceleration vector based two objects

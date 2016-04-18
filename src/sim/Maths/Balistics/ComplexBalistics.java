@@ -35,7 +35,7 @@ public class ComplexBalistics
 		{
 			vectors =new Vector[astronomicalObjects.length-1];
 			
-			for (int j = 0, idx = 0; j < astronomicalObjects.length; j++) //for one object calculategravitational vectors
+			for (int j = 0, idx = 0; j < astronomicalObjects.length; j++) //for one object calculate gravitational vectors
 			{
 				if (i != j)
 				{

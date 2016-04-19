@@ -54,7 +54,7 @@ public class SolarSystem
 			for (int i = 0; i < 55_000; i++)
 			{
 				balistics.updateAllPositions(86400d);
-				bf.write(getFormatedPositions(balistics.getAstronomicalObjects()) + '&');
+				bf.write(getFormatedPositions(balistics.getAstronomicalObjects()) + '\n');
 			}
 			System.out.println("Done");
 		}
@@ -80,7 +80,7 @@ public class SolarSystem
 			for (int i = 0; i < 55_000; i++)
 			{
 				balistics.updateAllPositions(86400d);
-				bf.write(getFormatedPositions(balistics.getAstronomicalObjects()) + '&');
+				bf.write(getFormatedPositions(balistics.getAstronomicalObjects()) + '\n');
 			}
 			System.out.println("Done");
 		}

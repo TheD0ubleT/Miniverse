@@ -25,7 +25,7 @@ public abstract class AstronomicalObject
 	}
 	
 	////Getters////
-	public Coordinates getCurrentCoordinates()
+	public Coordinates getCoordinates()
 	{
 		return this.coordinates;
 	}
@@ -41,7 +41,7 @@ public abstract class AstronomicalObject
 	}
 	
 	////Setters////
-	public void setCurrentCoordinates(Coordinates currentCoordinates)
+	public void setCoordinates(Coordinates currentCoordinates)
 	{
 		this.coordinates = currentCoordinates;
 	}
@@ -56,7 +56,7 @@ public abstract class AstronomicalObject
 		AstronomicalObject object = (AstronomicalObject) obj;
 		if (this.mass != object.getMass())
 			return false;
-		if (this.coordinates != object.getCurrentCoordinates())
+		if (this.coordinates != object.getCoordinates())
 			return false;
 		if (this.speed != object.getSpeed())
 			return false;

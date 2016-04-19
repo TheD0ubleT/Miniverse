@@ -1,5 +1,7 @@
 package sim.World.Space.AstronomicalObjects;
 
+import com.sun.org.apache.regexp.internal.REUtil;
+
 import sim.Maths.Balistics.Speed;
 import sim.World.Space.Coordinates;
 
@@ -44,5 +46,23 @@ public abstract class AstronomicalObject
 	public void setCoordinates(Coordinates coordinates)
 	{
 		this.coordinates = coordinates;
+	}
+	
+	////Overrides////
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this.getClass() != obj.getClass())
+			return false;
+		
+		AstronomicalObject object = (AstronomicalObject) obj;
+		if (this.mass != object.getMass())
+			return false;
+		if (this.coordinates != object.getCoordinates())
+			return false;
+		if (this.speed != object.getSpeed())
+			return false;
+		
+		return true;
 	}
 }

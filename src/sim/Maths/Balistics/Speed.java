@@ -41,4 +41,19 @@ public class Speed
 	{
 		return this.speedCoordinates;
 	}
+	
+	public double getX()
+	{
+		return this.speedCoordinates.getX();
+	}
+	
+	public double getY()
+	{
+		return this.speedCoordinates.getY();
+	}
+	
+	public double getZ()
+	{
+		return this.speedCoordinates.getZ();
+	}
 }

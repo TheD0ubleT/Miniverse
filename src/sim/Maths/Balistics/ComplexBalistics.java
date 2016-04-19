@@ -45,10 +45,11 @@ public class ComplexBalistics
 							getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'z')));
 				}
 			}
-			astronomicalObjects[i].setCoordinates(new Coordinates(
-					calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCoordinates().getX()),
-					calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCoordinates().getY()),
-					calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCoordinates().getZ())));
+			astronomicalObjects[i].setSpeed(86400d);
+			astronomicalObjects[i].setCurrentCoordinates(new Coordinates(
+					calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCurrentCoordinates().getX()),
+					calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCurrentCoordinates().getY()),
+					calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCurrentCoordinates().getZ())));
 		}
 	}
 	
@@ -66,10 +67,11 @@ public class ComplexBalistics
 						getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'z')));
 			}
 		}
-		astronomicalObjects[i].setCoordinates(new Coordinates(
-				calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCoordinates().getX()),
-				calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCoordinates().getY()),
-				calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCoordinates().getZ())));
+		astronomicalObjects[i].setSpeed(86400d);
+		astronomicalObjects[i].setCurrentCoordinates(new Coordinates(
+				calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCurrentCoordinates().getX()),
+				calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCurrentCoordinates().getY()),
+				calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCurrentCoordinates().getZ())));
 	}
 	
 	public double calculateNewPosOnAxis(char axis, double timeStep, double acceleration, double currentSpeed, double currentPosition)
@@ -83,12 +85,12 @@ public class ComplexBalistics
 	//returns 0 if axis not known
 	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
 	{
-		if (axis == 'x' && (obj2.getCoordinates().getX() - obj.getCoordinates().getX()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getX() - obj.getCoordinates().getX()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
-		if (axis == 'y' && (obj2.getCoordinates().getY() - obj.getCoordinates().getY()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getY() - obj.getCoordinates().getY()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
-		if (axis == 'z' && (obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+		if (axis == 'x' && (obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
+		if (axis == 'y' && (obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
+		if (axis == 'z' && (obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
 		
 		return 0d;
 	}

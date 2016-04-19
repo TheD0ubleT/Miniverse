@@ -2,9 +2,9 @@ package sim.Maths.Balistics;
 
 import sim.Constants;
 import sim.Maths.Operators;
-import sim.Maths.Vector;
 import sim.World.Space.Coordinates;
 import sim.World.Space.AstronomicalObjects.AstronomicalObject;
+import sim.World.Space.AstronomicalObjects.Star;
 
 public class SimpleBalistics
 {
@@ -25,9 +25,9 @@ public class SimpleBalistics
 		for(AstronomicalObject obj : astronomicalObjects)
 		{
 			totalMass += obj.getMass();
-			x += obj.getCoordinates().getX()*obj.getMass();
-			y += obj.getCoordinates().getY()*obj.getMass();
-			z += obj.getCoordinates().getZ()*obj.getMass();
+			x += obj.getCurrentCoordinates().getX()*obj.getMass();
+			y += obj.getCurrentCoordinates().getY()*obj.getMass();
+			z += obj.getCurrentCoordinates().getZ()*obj.getMass();
 		}
 		
 		this.centerOfMass.setX(x/totalMass);
@@ -36,22 +36,23 @@ public class SimpleBalistics
 		this.mass = totalMass;
 	}
 	
-	//gets acceleration vector based on object and ceter of mass
-	public Vector getAcceleration(AstronomicalObject object)
+	public double calculateNewPosOnAxis(char axis, double timeStep, AstronomicalObject obj, double currentSpeed, double currentPosition)
 	{
-		return new Vector(getGravitationalPull(object, 'x'), getGravitationalPull(object, 'y'), getGravitationalPull(object, 'z'));
+		// using newton's second law:
+		// position on x axis at time t: x(t) = (1/2)*Ax*t^2 + t * Vx0 + x0 
+		return (0.5 * getGravitationalPull(obj, new Star(this.mass, this.centerOfMass), axis) * Operators.square(timeStep)) + currentSpeed * timeStep + currentPosition;
 	}
 	
 	//calculates vector length on given axis
 	//returns 0 if axis not known
-	private double getGravitationalPull(AstronomicalObject obj, char axis)
+	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
 	{
-		if (axis == 'x')
-			return (Constants.G * mass * obj.getMass()) / Operators.square(this.centerOfMass.getX() - obj.getCoordinates().getX());
-		if (axis == 'y')
-			return (Constants.G * mass * obj.getMass()) / Operators.square(this.centerOfMass.getY() - obj.getCoordinates().getY());
-		if (axis == 'z')
-			return (Constants.G * mass * obj.getMass()) / Operators.square(this.centerOfMass.getZ() - obj.getCoordinates().getZ());
+		if (axis == 'x' && (obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
+		if (axis == 'y' && (obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
+		if (axis == 'z' && (obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
 		
 		return 0d;
 	}

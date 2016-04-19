@@ -4,6 +4,7 @@ import sim.Constants;
 import sim.Maths.Operators;
 import sim.Maths.Vector;
 import sim.World.Space.Coordinates;
+import sim.World.Space.Space;
 import sim.World.Space.AstronomicalObjects.AstronomicalObject;
 
 public class ComplexBalistics
@@ -28,70 +29,35 @@ public class ComplexBalistics
 		return this.astronomicalObjects;
 	}
 	
-	////Calculate trajectories////
+	private Vector getAccelerationVector(AstronomicalObject obj1, AstronomicalObject obj2)
+	{
+		// On each axis: (example for x axis)
+		// Ax(distance(obj1, obj2) * (obj2_X - obj2_X)) / (G * obj2_Mass)
+		double dist_G_Mass = (Constants.G * obj2.getMass()) / Operators.cube(Space.distance(obj1.getCoordinates(), obj2.getCoordinates()));
+		return new Vector(
+				(obj2.getCoordinates().getX() - obj1.getCoordinates().getX()) * dist_G_Mass,
+				(obj2.getCoordinates().getY() - obj1.getCoordinates().getY()) * dist_G_Mass,
+				(obj2.getCoordinates().getZ() - obj1.getCoordinates().getZ()) * dist_G_Mass);
+	}
+	
 	public void updateAllPositions(double timeStep)
 	{
 		Vector acc;
-		for (int i = 0; i < astronomicalObjects.length; i++) // for each object
+		for (AstronomicalObject obj1 : astronomicalObjects)
 		{
 			acc = new Vector();
-			for (int j = 0; j < astronomicalObjects.length; j++) // for each Other object
-			{
-				if (i != j)
-				{
-					acc = Operators.vectorAdd(acc, new Vector(
-							getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'x'),
-							getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'y'),
-							getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'z')));
-				}
-			}
-			astronomicalObjects[i].setSpeed(86400d);
-			astronomicalObjects[i].setCurrentCoordinates(new Coordinates(
-					calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCurrentCoordinates().getX()),
-					calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCurrentCoordinates().getY()),
-					calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCurrentCoordinates().getZ())));
+			for (AstronomicalObject obj2 : astronomicalObjects)
+				if (!obj1.equals(obj2))
+					acc = Operators.vectorAdd(acc, getAccelerationVector(obj1, obj2));
+			obj1.setSpeed(new Speed(new Coordinates(
+					acc.getCoordinates().getX() * timeStep + obj1.getSpeed().getX(),
+					acc.getCoordinates().getY() * timeStep + obj1.getSpeed().getY(),
+					acc.getCoordinates().getZ() * timeStep + obj1.getSpeed().getZ())));
 		}
-	}
-	
-	public void updateOnePosition(int objectIndex, double timeStep)
-	{
-		int i = objectIndex;
-		Vector acc = new Vector();
-		for (int j = 0; j < astronomicalObjects.length; j++) // for each Other object
-		{
-			if (i != j)
-			{
-				acc = Operators.vectorAdd(acc, new Vector(
-						getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'x'),
-						getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'y'),
-						getGravitationalPull(astronomicalObjects[i], astronomicalObjects[j], 'z')));
-			}
-		}
-		astronomicalObjects[i].setSpeed(86400d);
-		astronomicalObjects[i].setCurrentCoordinates(new Coordinates(
-				calculateNewPosOnAxis('x', timeStep, acc.getCoordinates().getX(), astronomicalObjects[i].getSpeed().getX(), astronomicalObjects[i].getCurrentCoordinates().getX()),
-				calculateNewPosOnAxis('y', timeStep, acc.getCoordinates().getY(), astronomicalObjects[i].getSpeed().getY(), astronomicalObjects[i].getCurrentCoordinates().getY()),
-				calculateNewPosOnAxis('z', timeStep, acc.getCoordinates().getZ(), astronomicalObjects[i].getSpeed().getZ(), astronomicalObjects[i].getCurrentCoordinates().getZ())));
-	}
-	
-	public double calculateNewPosOnAxis(char axis, double timeStep, double acceleration, double currentSpeed, double currentPosition)
-	{
-		// using newton's second law:
-		// position on x axis at time t: x(t) = (1/2)*Ax*t^2 + t * Vx0 + x0 
-		return (0.5 * acceleration * Operators.square(timeStep)) + currentSpeed * timeStep + currentPosition;
-	}
-	
-	//calculates vector length on given axis
-	//returns 0 if axis not known
-	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
-	{
-		if (axis == 'x' && (obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
-		if (axis == 'y' && (obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
-		if (axis == 'z' && (obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) * Math.signum(obj.getCurrentCoordinates().getX() - obj2.getCurrentCoordinates().getX());
-		
-		return 0d;
+		for (AstronomicalObject object : astronomicalObjects)
+			object.setCoordinates(new Coordinates(
+					object.getSpeed().getX() * timeStep + object.getCoordinates().getX(),
+					object.getSpeed().getY() * timeStep + object.getCoordinates().getY(),
+					object.getSpeed().getZ() * timeStep + object.getCoordinates().getZ()));
 	}
 }

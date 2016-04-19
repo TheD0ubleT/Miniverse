@@ -29,11 +29,11 @@ public class Speed
 	}
 	
 	//gets new speed from acceleration vector
-	public void getNewSpeed(Vector acceleration)
+	public void getNewSpeed(Vector acceleration, double timeStep)
 	{
-		speedCoordinates.setX(speedCoordinates.getX() + acceleration.getCoordinates().getX());
-		speedCoordinates.setY(speedCoordinates.getY() + acceleration.getCoordinates().getY());
-		speedCoordinates.setZ(speedCoordinates.getZ() + acceleration.getCoordinates().getZ());
+		speedCoordinates.setX(speedCoordinates.getX() + acceleration.getCoordinates().getX()*timeStep);
+		speedCoordinates.setY(speedCoordinates.getY() + acceleration.getCoordinates().getY()*timeStep);
+		speedCoordinates.setZ(speedCoordinates.getZ() + acceleration.getCoordinates().getZ()*timeStep);
 	}
 	
 	////Getters////

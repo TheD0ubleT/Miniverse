@@ -41,9 +41,9 @@ public abstract class AstronomicalObject
 	}
 	
 	////Setters////
-	public void setCoordinates(Coordinates currentCoordinates)
+	public void setCoordinates(Coordinates Coordinates)
 	{
-		this.coordinates = currentCoordinates;
+		this.coordinates = Coordinates;
 	}
 	
 	////Overrides////

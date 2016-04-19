@@ -25,9 +25,9 @@ public class SimpleBalistics
 		for(AstronomicalObject obj : astronomicalObjects)
 		{
 			totalMass += obj.getMass();
-			x += obj.getCurrentCoordinates().getX()*obj.getMass();
-			y += obj.getCurrentCoordinates().getY()*obj.getMass();
-			z += obj.getCurrentCoordinates().getZ()*obj.getMass();
+			x += obj.getCoordinates().getX()*obj.getMass();
+			y += obj.getCoordinates().getY()*obj.getMass();
+			z += obj.getCoordinates().getZ()*obj.getMass();
 		}
 		
 		this.centerOfMass.setX(x/totalMass);
@@ -47,12 +47,12 @@ public class SimpleBalistics
 	//returns 0 if axis not known
 	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
 	{
-		if (axis == 'x' && (obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
-		if (axis == 'y' && (obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getY() - obj.getCurrentCoordinates().getY()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
-		if (axis == 'z' && (obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCurrentCoordinates().getZ() - obj.getCurrentCoordinates().getZ()) * Math.signum(obj2.getCurrentCoordinates().getX() - obj.getCurrentCoordinates().getX());
+		if (axis == 'x' && (obj2.getCoordinates().getX() - obj.getCoordinates().getX()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getX() - obj.getCoordinates().getX()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+		if (axis == 'y' && (obj2.getCoordinates().getY() - obj.getCoordinates().getY()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getY() - obj.getCoordinates().getY()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+		if (axis == 'z' && (obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) != 0)
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
 		
 		return 0d;
 	}

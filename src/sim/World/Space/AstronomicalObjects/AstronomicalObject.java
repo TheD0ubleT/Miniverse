@@ -6,23 +6,20 @@ import sim.World.Space.Coordinates;
 public abstract class AstronomicalObject
 {
 	private double mass;
-	private Coordinates currentCoordinates;
-	private Coordinates previousCoordinates;
+	private Coordinates coordinates;
 	private Speed speed;
 	
 	////Constructor////	
 	public AstronomicalObject(double mass, Coordinates coordinates)
 	{
-		this.currentCoordinates = coordinates;
-		this.previousCoordinates = coordinates;
+		this.coordinates = coordinates;
 		this.mass = mass;
 		this.speed = new Speed();
 	}
 	
 	public AstronomicalObject(double mass, Coordinates coordinates, Speed initialSpeed)
 	{
-		this.currentCoordinates = coordinates;
-		this.previousCoordinates = coordinates;
+		this.coordinates = coordinates;
 		this.mass = mass;
 		this.speed = initialSpeed;
 	}
@@ -30,12 +27,7 @@ public abstract class AstronomicalObject
 	////Getters////
 	public Coordinates getCurrentCoordinates()
 	{
-		return this.currentCoordinates;
-	}
-	
-	public Coordinates getPreviousCoordinates()
-	{
-		return this.previousCoordinates;
+		return this.coordinates;
 	}
 	
 	public double getMass()
@@ -51,13 +43,7 @@ public abstract class AstronomicalObject
 	////Setters////
 	public void setCurrentCoordinates(Coordinates currentCoordinates)
 	{
-		this.previousCoordinates = this.currentCoordinates;
-		this.currentCoordinates = currentCoordinates;
-	}
-	
-	public void setPreviousCoordinates(Coordinates previousCoordinates)
-	{
-		this.previousCoordinates = previousCoordinates;
+		this.coordinates = currentCoordinates;
 	}
 	
 	////Overrides////
@@ -70,9 +56,7 @@ public abstract class AstronomicalObject
 		AstronomicalObject object = (AstronomicalObject) obj;
 		if (this.mass != object.getMass())
 			return false;
-		if (this.currentCoordinates != object.getCurrentCoordinates())
-			return false;
-		if (this.previousCoordinates != object.getPreviousCoordinates())
+		if (this.coordinates != object.getCurrentCoordinates())
 			return false;
 		if (this.speed != object.getSpeed())
 			return false;
@@ -83,13 +67,5 @@ public abstract class AstronomicalObject
 	public void setSpeed(Speed speed)
 	{
 		this.speed = speed;
-	}
-	
-	public void setSpeed(double timeStep)
-	{
-		this.speed = new Speed(
-				new Coordinates((currentCoordinates.getX() - previousCoordinates.getX())/timeStep,
-				(currentCoordinates.getY() - previousCoordinates.getY())/timeStep,
-				(currentCoordinates.getZ() - previousCoordinates.getZ())/timeStep));
 	}
 }

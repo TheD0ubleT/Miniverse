@@ -8,6 +8,11 @@ public class Vector
 	private Coordinates coordinates;
 	
 	////Constructor////
+	public Vector()
+	{
+		coordinates = new Coordinates();
+	}
+	
 	public Vector(double x, double y, double z)
 	{
 		this.coordinates = new Coordinates(x, y, z);

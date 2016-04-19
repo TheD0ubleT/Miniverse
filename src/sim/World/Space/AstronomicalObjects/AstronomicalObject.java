@@ -1,7 +1,5 @@
 package sim.World.Space.AstronomicalObjects;
 
-import com.sun.org.apache.regexp.internal.REUtil;
-
 import sim.Maths.Balistics.Speed;
 import sim.World.Space.Coordinates;
 
@@ -64,5 +62,10 @@ public abstract class AstronomicalObject
 			return false;
 		
 		return true;
+	}
+
+	public void setSpeed(Speed speed)
+	{
+		this.speed = speed;
 	}
 }

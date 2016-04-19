@@ -64,11 +64,11 @@ public class ComplexBalistics
 	private double getGravitationalPull(AstronomicalObject obj, AstronomicalObject obj2, char axis)
 	{
 		if (axis == 'x' && (obj2.getCoordinates().getX() - obj.getCoordinates().getX()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getX() - obj.getCoordinates().getX()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getX() - obj.getCoordinates().getX()) * Math.signum(-obj2.getCoordinates().getX() + obj.getCoordinates().getX());
 		if (axis == 'y' && (obj2.getCoordinates().getY() - obj.getCoordinates().getY()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getY() - obj.getCoordinates().getY()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getY() - obj.getCoordinates().getY()) * Math.signum(-obj2.getCoordinates().getX() + obj.getCoordinates().getX());
 		if (axis == 'z' && (obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) != 0)
-			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) * Math.signum(obj2.getCoordinates().getX() - obj.getCoordinates().getX());
+			return (Constants.G * obj2.getMass()) / Operators.square(obj2.getCoordinates().getZ() - obj.getCoordinates().getZ()) * Math.signum(-obj2.getCoordinates().getX() + obj.getCoordinates().getX());
 		
 		return 0d;
 	}

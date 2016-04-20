@@ -19,14 +19,14 @@ public class SolarSystem
 	public static void main(String[] args)
 	{ /////////////////NOTE: Speeds are in m*s^-1 \\\\\\\\\\\
 		Star sun = new Star(1.988550e30, new Coordinates());
-		Planet mercury = new Planet(330.2e21, new Coordinates(57_909_050_000d, 0, 0), new Speed(new Coordinates(0, 47_362d, 0)));
-		Planet venus = new Planet(4.8675e24, new Coordinates(108_939_000_000d, 0, 0), new Speed(new Coordinates(0, 35_200d, 0)));		
-		Planet earth = new Planet(5.972e24, new Coordinates(149_598_023_000d, 0, 0), new Speed(new Coordinates(0, 29_780d, 0)));		
-		Planet mars = new Planet(6.4171e23, new Coordinates(227_939_200_000d, 0, 0), new Speed(new Coordinates(0, 24_077d, 0)));		
-		Planet jupiter = new Planet(1.8986e27, new Coordinates(78.299e12, 0, 0), new Speed(new Coordinates(0, 13_070d, 0)));		
-		Planet saturn = new Planet(5.6836e26, new Coordinates(1_429.39e12, 0, 0), new Speed(new Coordinates(0, 9_690d, 0)));		
-		Planet uranus = new Planet(8.6810e25, new Coordinates(2_875.04e12, 0, 0), new Speed(new Coordinates(0, 6_800d, 0)));		
-		Planet neptune = new Planet(1.0243e26, new Coordinates(4_504.45e12, 0, 0), new Speed(new Coordinates(0, 5_430d, 0)));
+		Planet mercury = new Planet(330.2e21, new Coordinates(69_816_900_000d, 0, 0), new Speed(new Coordinates(0, 38_860d, 0)));
+		Planet venus = new Planet(4.8675e24, new Coordinates(108_939_000_000d, 0, 0), new Speed(new Coordinates(0, 34_790d, 0)));		
+		Planet earth = new Planet(5.972e24, new Coordinates(152_100_000_000d, 0, 0), new Speed(new Coordinates(0, 29_291d, 0)));		
+		Planet mars = new Planet(6.4171e23, new Coordinates(249_228_730_000d, 0, 0), new Speed(new Coordinates(0, 21_972d, 0)));		
+		Planet jupiter = new Planet(1.8986e27, new Coordinates(816_620_000_000d, 0, 0), new Speed(new Coordinates(0, 12_440d, 0)));		
+		Planet saturn = new Planet(5.6836e26, new Coordinates(1_503_983_449_000d, 0, 0), new Speed(new Coordinates(0, 9_137d, 0)));		
+		Planet uranus = new Planet(8.6810e25, new Coordinates(3_006_318_143_000d, 0, 0), new Speed(new Coordinates(0, 6_486d, 0)));		
+		Planet neptune = new Planet(1.0243e26, new Coordinates(4_553_946_490_000d, 0, 0), new Speed(new Coordinates(0, 5_385d, 0)));
 		
 		System.out.println("Planets created");
 		
@@ -63,7 +63,16 @@ public class SolarSystem
 		catch (IOException e){}
 		finally{}
 		
-		
+
+		sun = new Star(1.988550e30, new Coordinates());
+		mercury = new Planet(330.2e21, new Coordinates(57_909_050_000d, 0, 0), new Speed(new Coordinates(0, 47_362d, 0)));
+		venus = new Planet(4.8675e24, new Coordinates(108_939_000_000d, 0, 0), new Speed(new Coordinates(0, 35_200d, 0)));		
+		earth = new Planet(5.972e24, new Coordinates(149_598_023_000d, 0, 0), new Speed(new Coordinates(0, 29_780d, 0)));		
+		mars = new Planet(6.4171e23, new Coordinates(227_939_200_000d, 0, 0), new Speed(new Coordinates(0, 24_077d, 0)));		
+		jupiter = new Planet(1.8986e27, new Coordinates(78.299e9, 0, 0), new Speed(new Coordinates(0, 13_070d, 0)));		
+		saturn = new Planet(5.6836e26, new Coordinates(1_429.39e9, 0, 0), new Speed(new Coordinates(0, 9_690d, 0)));		
+		uranus = new Planet(8.6810e25, new Coordinates(2_875.04e9, 0, 0), new Speed(new Coordinates(0, 6_800d, 0)));		
+		neptune = new Planet(1.0243e26, new Coordinates(4_504.45e9, 0, 0), new Speed(new Coordinates(0, 5_430d, 0)));
 		
 		AstronomicalObject[] smallSolarSystem = {
 				sun,

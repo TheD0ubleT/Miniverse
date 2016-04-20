@@ -17,15 +17,19 @@ public class Constants
 	public static Random rand = new Random();
 	
 	////Math////
-	public static double PI = 3.1415926535d;
-	public static double E = 2.7182818284d;
+	public static final double PI = 3.1415926535d;
+	public static final double E = 2.7182818284d;
 	
 	////Physics////
-	public static double G = 6.67408e-11; //Gravitational constant
-	public static double H = 6.62607004e-34; //Planck's constant
-	public static double C = 299_792_458; //Speed of light
-	public static double ELEMETARY_CHARGE = 1.602176565e-19;
-	public static double MOL = 6.02214129e23; //Avogadro's number
+	public static final double G = 6.67408e-11; //Gravitational constant
+	public static final double H = 6.62607004e-34; //Planck's constant
+	public static final double C = 299_792_458; //Speed of light
+	public static final double ELEMETARY_CHARGE = 1.602176565e-19; //Charge of a protons or electron (+/-)
+	public static final double MOL = 6.02214129e23; //Avogadro's number
+	
+	public static final double PROTON_MASS = 1.6726e-24; //Mass of a proton
+	public static final double NEUTRON_MASS = 1.6726e-24; //Mass of a neutron
+	public static final double ELECTRON_MASS = 9.1094e-23; //Mass of a electron
 	
 	////////////////////////////////////////////////////
 	//////////METHODS//////METHODS//////METHODS/////////

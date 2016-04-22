@@ -2,19 +2,19 @@ package sim;
 
 import java.util.Random;
 
-public class Constants
+public final class Constants
 {
-	/////TIME and TICK///////
-	public static final int TIME_STEP = 3600;
-	public static final int SMALL_BIG_FACTOR = 24;
-	public static final int BIG_STEP = TIME_STEP * SMALL_BIG_FACTOR;
+	/////TIME and TICK///////  (Time given in seconds)
+	public static final int TIME_STEP = 3600; //Smallest time increment Step for given Calculation
+	public static final int SMALL_BIG_FACTOR = 24; // Number of small steps to execute before doing BigStep actions
+	public static final int BIG_STEP = TIME_STEP * SMALL_BIG_FACTOR; //Big step is here to execute less important actions less often 
 	
 	/////Dynamic Time//////
 	public static long UNIX_TIME;
 	private static int STEPS_DONE;
 	
 	////Random Generators////
-	public static Random rand = new Random();
+	public final static Random RAND = new Random();
 	
 	////Math////
 	public static final double PI = 3.1415926535d;

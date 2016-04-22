@@ -16,7 +16,7 @@ public class Antigene
 		//and checks if it is already associated with a sickness
 		long temp = 0;
 		do{
-			temp = Constants.rand.nextLong();
+			temp = Constants.RAND.nextLong();
 		}while (allHashes.contains(temp));
 		
 		this.antigeneHash = temp;

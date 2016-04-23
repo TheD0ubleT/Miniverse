@@ -5,7 +5,7 @@ import sim.World.Space.Coordinates;
 
 public class Planet extends AstronomicalObject
 {
-	public double radius;
+	private double radius;
 	
 	////Constructor////
 	public Planet(double mass, Coordinates coordinates)
@@ -24,5 +24,15 @@ public class Planet extends AstronomicalObject
 	{
 		super(mass, coordinates, initialSpeed);
 		this.radius = radius;
-	}	
+	}
+	
+	public double getRadius()
+	{
+		return this.radius;
+	}
+	
+	public void setRadius(double radius)
+	{
+		this.radius = radius;
+	}
 }

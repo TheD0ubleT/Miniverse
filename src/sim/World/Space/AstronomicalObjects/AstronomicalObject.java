@@ -68,4 +68,9 @@ public abstract class AstronomicalObject
 	{
 		this.speed = speed;
 	}
+	
+	public void setMass(double mass)
+	{
+		this.mass = mass;
+	}
 }

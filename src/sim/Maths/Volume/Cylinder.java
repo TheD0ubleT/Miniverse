@@ -10,8 +10,9 @@ public class Cylinder
 	private double radius;
 	private double height;
 	
-	public Cylinder(Coordinates centerOfInertia, double radius)
+	public Cylinder(Coordinates centerOfInertia, double radius, double height)
 	{
+		this.height = height;
 		this.radius = radius;
 		this.centerOfInertia = centerOfInertia;
 	}

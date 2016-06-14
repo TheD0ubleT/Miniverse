@@ -1,6 +1,6 @@
 package sim.Organism.Person.Consituants;
 
-public class Personnality
+public class Personality
 {
 
 }

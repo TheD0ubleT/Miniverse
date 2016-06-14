@@ -1,4 +1,4 @@
-package sim.Maths.Volume;
+package sim.Maths.Shapes;
 
 import sim.Constants;
 import sim.Maths.Operators;
@@ -21,14 +21,29 @@ public class Sphere
 		return this.centerOfInertia;
 	}
 	
+	public double getRadius()
+	{
+		return this.radius;
+	}
+	
 	public double getVolume()
 	{
 		return (4d/3d) * Constants.PI * Operators.cube(radius);
+	}
+	
+	public double getSurfaceArea()
+	{
+		return 4 * Constants.PI * Operators.square(radius);
 	}
 	
 	////Setters////
 	public void setCenterOfInertia(Coordinates centerOfInertia)
 	{
 		this.centerOfInertia = centerOfInertia;
+	}
+	
+	public void setRadius(double radius)
+	{
+		this.radius = radius;
 	}
 }

@@ -5,7 +5,7 @@ public class Operators
 	////Square////
 	public static double square(double x)
 	{
-		return x*x;
+		return x * x;
 	}
 	
 	public static int square(int x)

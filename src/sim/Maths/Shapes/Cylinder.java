@@ -1,4 +1,4 @@
-package sim.Maths.Volume;
+package sim.Maths.Shapes;
 
 import sim.Constants;
 import sim.Maths.Operators;
@@ -21,6 +21,16 @@ public class Cylinder
 	public Coordinates getCenterOfInertia()
 	{
 		return this.centerOfInertia;
+	}
+	
+	public double getRadius()
+	{
+		return this.radius;
+	}
+	
+	public double getHeight()
+	{
+		return this.height;
 	}
 	
 	public double getVolume() //Volume
@@ -47,5 +57,15 @@ public class Cylinder
 	public void setCenterOfInertia(Coordinates centerOfInertia)
 	{
 		this.centerOfInertia = centerOfInertia;
+	}
+	
+	public void setRadius(double radius)
+	{
+		this.radius = radius;
+	}
+	
+	public void setHeight(double height)
+	{
+		this.height = height;
 	}
 }

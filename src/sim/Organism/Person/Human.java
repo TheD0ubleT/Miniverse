@@ -8,7 +8,7 @@ public class Human
 {
 	private static ArrayList<Long> allHashes;
 	private long humanHash;
-	public int gender;
+	public boolean gender;  // True => Male  False => female
 	public int age;
 	public String birthday;
 	public String name;
@@ -16,7 +16,8 @@ public class Human
 	////Constructor////
 	public Human()
 	{
-		allHashes = new ArrayList<Long>();
+		//only create new hash array if none already made, avoids overwriting previous
+		allHashes = allHashes == null ? new ArrayList<Long>(): allHashes;
 		long temp = 0;
 		do
 		{
@@ -25,11 +26,17 @@ public class Human
 		while (allHashes.contains(temp));
 		
 		this.humanHash = temp;
+		this.gender = false;
+		this.age = 0;
+		this.name =  "UnNamed";
+		this.birthday = "None";
+		
+		
 	}
 	
-	public Human(String name, int gender, int age, String birthday)
+	public Human(String name, boolean gender, int age, String birthday)
 	{
-		allHashes = new ArrayList<Long>();
+		allHashes = allHashes == null ? new ArrayList<Long>(): allHashes;
 		long temp = 0;
 		do
 		{
@@ -56,7 +63,7 @@ public class Human
 		return this.humanHash;
 	}
 	
-	public int getGender()
+	public boolean getGender()
 	{
 		return this.gender;
 	}
@@ -72,7 +79,7 @@ public class Human
 	}
 	
 	////Setters////
-	public void setGender(int gender)
+	public void setGender(boolean gender)
 	{
 		this.gender = gender;
 	}

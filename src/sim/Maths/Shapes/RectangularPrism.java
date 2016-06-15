@@ -2,14 +2,14 @@ package sim.Maths.Shapes;
 
 import sim.World.Space.Coordinates;
 
-public class Cube
+public class RectangularPrism
 {
 	private Coordinates centerOfInertia;
 	private double length;
 	private double width;
 	private double height;
 	
-	public Cube(Coordinates centerOfInertia, double length, double width, double height)
+	public RectangularPrism(Coordinates centerOfInertia, double length, double width, double height)
 	{
 		this.length = length;
 		this.width = width;
@@ -38,29 +38,44 @@ public class Cube
 		return this.width;
 	}
 	
+	public double getFaceOnePerimeter() //L Face 1
+	{
+		return 2 * length + 2 * height;
+	}
+	
+	public double getFaceTwoPerimeter() //W Face 2
+	{
+		return 2 * length + 2 * width;
+	}
+	
+	public double getFaceThreePerimeter() //H Face 3
+	{
+		return 2 * width + 2 * height;
+	}
+	
 	public double getVolume()
 	{
 		return length * width * height;
 	}
 	
-	public double lengthArea() //L Names cohere to adjacent face 
+	public double faceOneArea() //L Face 1 Names cohere to adjacent face 
 	{
 		return length * height;
 	}
 	
-	public double widthArea() //W
+	public double faceTwoArea() //W Face 2
 	{
 		return length * width;
 	}
 	
-	public double heightArea() //H
+	public double faceThreeArea() //H Face 3
 	{
 		return width * height;
 	}
 	
 	public double getSurfaceArea()
 	{
-		return (2 * lengthArea()) + (2 * widthArea()) + (2 * heightArea());
+		return 2 * faceOneArea() + 2 * faceTwoArea() + 2 * faceThreeArea();
 	}
 	
 	////Setters////

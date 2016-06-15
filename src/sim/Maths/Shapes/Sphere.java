@@ -26,6 +26,11 @@ public class Sphere
 		return this.radius;
 	}
 	
+	public double getCircumference()
+	{
+		return 2 * Constants.PI * radius;
+	}
+	
 	public double getVolume()
 	{
 		return (4d/3d) * Constants.PI * Operators.cube(radius);

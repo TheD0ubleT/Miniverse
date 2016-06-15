@@ -33,6 +33,11 @@ public class Cylinder
 		return this.height;
 	}
 	
+	public double getCircumference()
+	{
+		return 2 * Constants.PI * radius;
+	}
+	
 	public double getVolume() //Volume
 	{
 		return getFaceArea() * height;
@@ -40,7 +45,7 @@ public class Cylinder
 	
 	public double getLateralArea() //For lateral side without faces
 	{
-		return 2 * Constants.PI * radius * height;
+		return getCircumference() * height;
 	}
 	
 	public double getFaceArea() //For faces (top or bottom)
@@ -50,7 +55,7 @@ public class Cylinder
 	
 	public double getSurfaceArea() //For Surface area (Lateral + 2*Face)
 	{
-		return getLateralArea() + 2 * Constants.PI * Operators.square(radius);
+		return getLateralArea() + 2 * getFaceArea();
 	}
 	
 	////Setters////

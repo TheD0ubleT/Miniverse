@@ -26,6 +26,8 @@ public class Human
 	public Human()
 	{
 		allHashes = new ArrayList<Long>();
+		//only create new hash array if none already made, avoids overwriting previous
+		allHashes = allHashes == null ? new ArrayList<Long>(): allHashes;
 		long temp = 0;
 		do
 		{
@@ -49,6 +51,8 @@ public class Human
 	public Human(String firstName, String lastName, String gender, int age, String birthday)
 	{
 		allHashes = new ArrayList<Long>();
+		//only create new hash array if none already made, avoids overwriting previous
+		allHashes = allHashes == null ? new ArrayList<Long>(): allHashes;
 		long temp = 0;
 		do
 		{
@@ -68,6 +72,8 @@ public class Human
 	public void HumanRandom()
 	{
 		allHashes = new ArrayList<Long>();
+		//only create new hash array if none already made, avoids overwriting previous
+		allHashes = allHashes == null ? new ArrayList<Long>(): allHashes;
 		long temp = 0;
 		do
 		{

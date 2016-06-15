@@ -1,4 +1,4 @@
-package run.Astronomics.Motion.NeptuneDiscoveryTest;
+package run.MiniverseComponentTest;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,7 +12,7 @@ import sim.World.Space.AstronomicalObjects.AstronomicalObject;
 import sim.World.Space.AstronomicalObjects.Planet;
 import sim.World.Space.AstronomicalObjects.Star;
 
-public class SolarSystem
+public class NeptuneDiscoveryTest
 {
 	public static ComplexBalistics balistics;
 

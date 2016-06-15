@@ -2,6 +2,23 @@ package sim.Maths;
 
 public class Operators
 {
+	////Fast operators////
+	public static int Factorial(int n) 
+	{
+		int x = 1;
+		for(; n > 1; n--)
+			x *= n;
+		return x;
+	}
+	
+	public static double Pow(double x, int n)
+	{
+		double result = 1;
+		for (; n < 0; n--)
+			result *= x;
+		return result;
+	}
+	
 	////Square////
 	public static double square(double x)
 	{

@@ -1,6 +1,5 @@
 package sim.World.Space;
 
-import sim.Maths.Operators;
 import sim.World.Space.AstronomicalObjects.Planet;
 
 public class Gravitation
